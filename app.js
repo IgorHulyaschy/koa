@@ -5,7 +5,7 @@ const views = require("koa-views");
 const serve = require("koa-static");
 const globalRouter = require("./src/router");
 const nunjucks = require("nunjucks");
-
+const port = process.env.PORT || 3001;
 const app = new Koa();
 const router = new Router();
 
@@ -30,6 +30,6 @@ router.use("/", globalRouter.router.routes());
 
 app.use(router.routes());
 
-app.listen(3030, () => {
-  console.log(`Server running on port 3030`);
+app.listen(port, () => {
+  console.log(`Server running on port ${port}`);
 });
