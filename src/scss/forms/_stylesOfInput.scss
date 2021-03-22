@@ -5,13 +5,14 @@
 
 .inputForSmthing{
   @include white-field-text;
-  
+  box-sizing: border-box;
   width: 100%;
   
 }
 .inputInRow{
   @include white-field-text;
-  width: 40%;
+  width: 90%;
+  box-sizing: border-box;
   
 }
 .inputInRow:focus,.inputForSmthing:focus{

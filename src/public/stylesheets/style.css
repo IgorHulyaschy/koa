@@ -10,6 +10,7 @@ input[type="text"], input[type="password"], input[type="button"] {
   border: 0;
   box-shadow: 0 0 15px 4px rgba(0, 0, 0, 0.06);
   border-left: 4px solid transparent;
+  box-sizing: border-box;
   width: 100%; }
 
 .inputInRow {
@@ -17,7 +18,8 @@ input[type="text"], input[type="password"], input[type="button"] {
   border: 0;
   box-shadow: 0 0 15px 4px rgba(0, 0, 0, 0.06);
   border-left: 4px solid transparent;
-  width: 40%; }
+  width: 90%;
+  box-sizing: border-box; }
 
 .inputInRow:focus, .inputForSmthing:focus {
   border-left-color: #a200ff;
@@ -164,8 +166,15 @@ a {
         .container .content .wrapper form .name-lastName {
           width: 100%;
           display: flex;
-          justify-content: space-between;
           flex-direction: row; }
+          .container .content .wrapper form .name-lastName .nav-input1 {
+            display: flex;
+            justify-content: flex-start;
+            width: 50%; }
+          .container .content .wrapper form .name-lastName .nav-input2 {
+            display: flex;
+            justify-content: flex-end;
+            width: 50%; }
         .container .content .wrapper form .login-password {
           width: 100%;
           display: flex;
@@ -306,7 +315,7 @@ a {
                   align-items: center; }
                 .main-wrap .container-profile .wrapper-content .wrapper-profile-content .profile-content .search-container .filter .settings .selected::after {
                   content: "";
-                  background: url("images/arrow-down2.svg");
+                  background: url("../images/arrow-down2.svg");
                   background-size: 15px;
                   background-repeat: no-repeat;
                   position: absolute;
@@ -433,7 +442,7 @@ a {
                       align-items: center; }
                     .main-wrap .container-profile .wrapper-content .wrapper-profile-content .profile-content .wrap .cont .user-settings .wrapper-user-col1 .setting .selected::after {
                       content: "";
-                      background: url("images/arrow-down2.svg");
+                      background: url("../images/arrow-down2.svg");
                       background-size: 15px;
                       background-repeat: no-repeat;
                       position: absolute;

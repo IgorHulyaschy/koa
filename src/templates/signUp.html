@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 {% block content %}
 <header>
-  <img class="logo" src="css/images/logo.svg">
+  <img class="logo" src="./images/logo.svg">
   <nav>Already have an acoount?
     <a href="index.html" class="navBut">Log in</a>
   </nav>
@@ -11,8 +11,12 @@
     <form>
       <span>Sign up</span>
       <section class="name-lastName">
-        <input type="text" placeholder="Name" class="inputInRow">
-        <input type="text" placeholder="Last Name" class="inputInRow">
+        <div class="nav-input1">
+          <input type="text" placeholder="Name" class="inputInRow">
+        </div>
+        <div class="nav-input2">
+          <input type="text" placeholder="Last Name" class="inputInRow">
+        </div>
       </section>
       <section class="login-password">      
         <input type="text" placeholder="Login" class="inputForSmthing">

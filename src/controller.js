@@ -17,12 +17,12 @@ async function profile(ctx) {
   });
 }
 async function activeMessage(ctx) {
-  await ctx.render("active-message", {
+  await ctx.render("activate-message", {
     title: "Check E-mail",
   });
 }
 async function completeAcc(ctx) {
-  await ctx.render("complete-account", {
+  await ctx.render("complete-acc", {
     title: "Complete account",
   });
 }
@@ -63,6 +63,11 @@ async function signUp(ctx) {
     title: "Sign up",
   });
 }
+async function list(ctx) {
+  await ctx.render("list", {
+    title: "List",
+  });
+}
 
 module.exports = {
   signIn,
@@ -77,4 +82,5 @@ module.exports = {
   resetPass,
   search,
   signUp,
+  list,
 };

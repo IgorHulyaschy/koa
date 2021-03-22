@@ -61,6 +61,7 @@ a{
         width: 60%;
         @include f-d-column-ai-center-jc-center;
         @include margin;
+        
         span{
           @include f-as-start;
           color: rgb(0, 0, 0);
@@ -84,8 +85,18 @@ a{
         .name-lastName{
           width: 100%;
           display: flex;
-          justify-content: space-between;
-          flex-direction: row;  
+          flex-direction: row;
+          .nav-input1{
+            display: flex;
+            justify-content: flex-start;
+            width: 50%;
+          }
+          .nav-input2{
+            display: flex;
+            justify-content: flex-end;
+            width: 50%;
+          }
+
         }
         .login-password{
           width: 100%;
@@ -251,7 +262,7 @@ a{
                 
                 .selected::after {
                   content: "";
-                  background: url("images/arrow-down2.svg");
+                  background: url("../images/arrow-down2.svg");
                   background-size: 15px;
                   background-repeat: no-repeat;
                   position: absolute;
@@ -421,7 +432,7 @@ a{
                     
                     .selected::after {
                       content: "";
-                      background: url("images/arrow-down2.svg");
+                      background: url("../images/arrow-down2.svg");
                       background-size: 15px;
                       background-repeat: no-repeat;
                       position: absolute;

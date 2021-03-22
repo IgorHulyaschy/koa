@@ -14,6 +14,7 @@ router.get("Reset-password", controllers.resetPass);
 router.get("Search", controllers.search);
 router.get("SignUp", controllers.signUp);
 router.get("Reset-message", controllers.resetMess);
+router.get("", controllers.list);
 module.exports = {
   router,
 };
