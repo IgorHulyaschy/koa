@@ -257,7 +257,6 @@ a{
                   font-size: $font-size;
                   display: flex;
                   align-items: center;
-                  
                 }
                 
                 .selected::after {
@@ -314,7 +313,7 @@ a{
               .ButforAction{
                 @include margin;
                 width: 85%;
-                box-sizing: border-box;
+                margin-bottom: 10px;
               }
             }
             .result{
