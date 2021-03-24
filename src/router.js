@@ -2,18 +2,16 @@ const Router = require("koa-router");
 const controllers = require("./controller");
 const router = new Router();
 
-router.get("SignIn", controllers.signIn);
-router.get("base", controllers.base);
-router.get("baseOfProfile", controllers.baseOfProfile);
-router.get("Profile", controllers.profile);
-router.get("Activate-message", controllers.activeMessage);
-router.get("Complete", controllers.completeAcc);
-router.get("Password-recovery", controllers.passRecovery);
-router.get("Profile-info", controllers.profileMore);
-router.get("Reset-password", controllers.resetPass);
-router.get("Search", controllers.search);
-router.get("SignUp", controllers.signUp);
-router.get("Reset-message", controllers.resetMess);
+router.get("signIn", controllers.signIn);
+router.get("profile", controllers.profile);
+router.get("activate-message", controllers.activeMessage);
+router.get("complete", controllers.completeAcc);
+router.get("password-recovery", controllers.passRecovery);
+router.get("profile-info", controllers.profileMore);
+router.get("reset-password", controllers.resetPass);
+router.get("search", controllers.search);
+router.get("signUp", controllers.signUp);
+router.get("reset-message", controllers.resetMess);
 router.get("", controllers.list);
 module.exports = {
   router,

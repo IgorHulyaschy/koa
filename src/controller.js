@@ -1,14 +1,10 @@
-async function base(ctx) {
-  await ctx.render("base");
-}
+
 async function signIn(ctx) {
   await ctx.render("index", {
     title: "Sign in",
   });
 }
-async function baseOfProfile(ctx) {
-  await ctx.render("baseOfProfile");
-}
+
 async function profile(ctx) {
   await ctx.render("profile", {
     title: "Profile",
@@ -71,8 +67,6 @@ async function list(ctx) {
 
 module.exports = {
   signIn,
-  base,
-  baseOfProfile,
   profile,
   activeMessage,
   completeAcc,
