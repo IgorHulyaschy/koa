@@ -13,7 +13,7 @@ const nunjucksEnvironment = new nunjucks.Environment(
   new nunjucks.FileSystemLoader(path.join(__dirname, "/src/templates"))
 );
 
-const render = views(path.join(__dirname, "/src/templates"), {
+const render = views(path.join(__dirname, "/src/templates/views"), {
   extention: "html",
   options: {
     nunjucksEnv: nunjucksEnvironment,
@@ -23,7 +23,9 @@ const render = views(path.join(__dirname, "/src/templates"), {
   },
 });
 
+
 app.use(render);
+
 app.use(serve(path.join(__dirname, "/src/public")));
 
 router.use("/", globalRouter.router.routes());
