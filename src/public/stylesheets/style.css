@@ -343,6 +343,29 @@ a {
           display: flex;
           justify-content: center;
           overflow: auto; }
+          .main-wrap .container-profile .wrapper-content .wrapper-profile-content .profile-content .adminZone {
+            align-self: center;
+            width: 80%;
+            height: 80%; }
+            .main-wrap .container-profile .wrapper-content .wrapper-profile-content .profile-content .adminZone .searchAdmin {
+              display: flex;
+              justify-content: flex-end;
+              height: 10%;
+              width: 100%; }
+              .main-wrap .container-profile .wrapper-content .wrapper-profile-content .profile-content .adminZone .searchAdmin .inputForSmthing {
+                width: 20%;
+                position: relative; }
+            .main-wrap .container-profile .wrapper-content .wrapper-profile-content .profile-content .adminZone .adminTable {
+              padding: 10px;
+              border: 0;
+              box-shadow: 0 0 15px 4px rgba(0, 0, 0, 0.06);
+              padding: 0;
+              margin-top: 20px;
+              height: 90%;
+              width: 100%;
+              box-sizing: border-box;
+              display: flex;
+              flex-direction: column; }
           .main-wrap .container-profile .wrapper-content .wrapper-profile-content .profile-content .search-container {
             width: 100%;
             height: 100%;
@@ -368,71 +391,93 @@ a {
                 .main-wrap .container-profile .wrapper-content .wrapper-profile-content .profile-content .search-container .filter .settings .inputForSmthing {
                   width: 100%;
                   box-sizing: border-box; }
-                .main-wrap .container-profile .wrapper-content .wrapper-profile-content .profile-content .search-container .filter .settings .select-box {
-                  display: flex;
-                  width: 100%;
-                  flex-direction: column; }
-                .main-wrap .container-profile .wrapper-content .wrapper-profile-content .profile-content .search-container .filter .settings .select-box .options-container {
-                  max-height: 0;
-                  width: 100%;
-                  opacity: 0;
-                  transition: all 0.4s;
-                  overflow: hidden;
-                  padding: 10px;
-                  border: 0;
-                  box-shadow: 0 0 15px 4px rgba(0, 0, 0, 0.06);
-                  order: 1;
-                  box-sizing: border-box; }
-                .main-wrap .container-profile .wrapper-content .wrapper-profile-content .profile-content .search-container .filter .settings .selected {
-                  margin-bottom: 8px;
-                  position: relative;
-                  padding: 10px;
-                  border: 0;
-                  box-shadow: 0 0 15px 4px rgba(0, 0, 0, 0.06);
-                  order: 0;
-                  height: 16px;
-                  font-size: 18;
-                  display: flex;
-                  align-items: center; }
-                .main-wrap .container-profile .wrapper-content .wrapper-profile-content .profile-content .search-container .filter .settings .selected::after {
+                .main-wrap .container-profile .wrapper-content .wrapper-profile-content .profile-content .search-container .filter .settings .geo::before {
                   content: "";
-                  background: url("../images/arrow-down2.svg");
+                  display: block;
+                  background: url("../images/Vector.svg");
                   background-size: 15px;
                   background-repeat: no-repeat;
                   position: absolute;
                   height: 16px;
                   width: 16px;
                   right: 5px;
-                  top: 11px;
-                  transition: all 0.4s; }
-                .main-wrap .container-profile .wrapper-content .wrapper-profile-content .profile-content .search-container .filter .settings .select-box .options-container.active {
-                  max-height: 240px;
-                  opacity: 1;
-                  overflow-y: scroll; }
-                .main-wrap .container-profile .wrapper-content .wrapper-profile-content .profile-content .search-container .filter .settings .select-box .options-container.active + .selected::after {
-                  transform: rotateX(180deg); }
-                .main-wrap .container-profile .wrapper-content .wrapper-profile-content .profile-content .search-container .filter .settings .select-box .options-container::-webkit-scrollbar {
-                  width: 8px;
-                  background: #b3b3b3; }
-                .main-wrap .container-profile .wrapper-content .wrapper-profile-content .profile-content .search-container .filter .settings .select-box .options-container::-webkit-scrollbar-thumb {
-                  background: #525861;
-                  border-radius: 8px; }
-                .main-wrap .container-profile .wrapper-content .wrapper-profile-content .profile-content .search-container .filter .settings .select-box .option,
-                .main-wrap .container-profile .wrapper-content .wrapper-profile-content .profile-content .search-container .filter .settings .selected {
-                  cursor: pointer; }
-                .main-wrap .container-profile .wrapper-content .wrapper-profile-content .profile-content .search-container .filter .settings .select-box .option:hover {
-                  background: #d6d6d6; }
-                .main-wrap .container-profile .wrapper-content .wrapper-profile-content .profile-content .search-container .filter .settings .select-box label {
-                  cursor: pointer; }
-                .main-wrap .container-profile .wrapper-content .wrapper-profile-content .profile-content .search-container .filter .settings .select-box .option .radio {
-                  display: none; }
+                  top: 11px; }
               .main-wrap .container-profile .wrapper-content .wrapper-profile-content .profile-content .search-container .filter .ButforAction {
                 margin-top: 20px;
                 width: 100%;
                 margin-bottom: 10px; }
             .main-wrap .container-profile .wrapper-content .wrapper-profile-content .profile-content .search-container .result {
               width: 80%;
-              height: 90%; }
+              height: 90%;
+              display: flex;
+              justify-content: center; }
+              .main-wrap .container-profile .wrapper-content .wrapper-profile-content .profile-content .search-container .result .wrap-moreFilters {
+                height: 100%;
+                width: 90%; }
+                .main-wrap .container-profile .wrapper-content .wrapper-profile-content .profile-content .search-container .result .wrap-moreFilters .search-result {
+                  width: 100%;
+                  height: 90%;
+                  display: flex;
+                  flex-direction: column; }
+                  .main-wrap .container-profile .wrapper-content .wrapper-profile-content .profile-content .search-container .result .wrap-moreFilters .search-result .user-results {
+                    width: 100%;
+                    display: flex;
+                    flex-direction: row;
+                    justify-content: space-around; }
+                    .main-wrap .container-profile .wrapper-content .wrapper-profile-content .profile-content .search-container .result .wrap-moreFilters .search-result .user-results .user {
+                      margin-top: 20px;
+                      padding: 10px;
+                      border: 0;
+                      box-shadow: 0 0 15px 4px rgba(0, 0, 0, 0.06);
+                      width: 40%;
+                      height: 100px;
+                      display: flex;
+                      flex-direction: row; }
+                      .main-wrap .container-profile .wrapper-content .wrapper-profile-content .profile-content .search-container .result .wrap-moreFilters .search-result .user-results .user .nav-profile-user {
+                        width: 15%;
+                        display: flex;
+                        justify-content: center;
+                        align-items: center; }
+                      .main-wrap .container-profile .wrapper-content .wrapper-profile-content .profile-content .search-container .result .wrap-moreFilters .search-result .user-results .user .box-avatar {
+                        width: 30%;
+                        display: flex;
+                        justify-content: center;
+                        align-items: center; }
+                        .main-wrap .container-profile .wrapper-content .wrapper-profile-content .profile-content .search-container .result .wrap-moreFilters .search-result .user-results .user .box-avatar img {
+                          display: flex;
+                          border-radius: 50%;
+                          width: 90%;
+                          box-sizing: border-box; }
+                      .main-wrap .container-profile .wrapper-content .wrapper-profile-content .profile-content .search-container .result .wrap-moreFilters .search-result .user-results .user .user-info {
+                        display: flex;
+                        flex-direction: column;
+                        width: 55%;
+                        color: #525861; }
+                        .main-wrap .container-profile .wrapper-content .wrapper-profile-content .profile-content .search-container .result .wrap-moreFilters .search-result .user-results .user .user-info .fullName {
+                          font-size: 20px;
+                          font-weight: bold; }
+                        .main-wrap .container-profile .wrapper-content .wrapper-profile-content .profile-content .search-container .result .wrap-moreFilters .search-result .user-results .user .user-info .stack span, .main-wrap .container-profile .wrapper-content .wrapper-profile-content .profile-content .search-container .result .wrap-moreFilters .search-result .user-results .user .user-info .baseRate span {
+                          color: #a200ff;
+                          font-weight: bold; }
+                .main-wrap .container-profile .wrapper-content .wrapper-profile-content .profile-content .search-container .result .wrap-moreFilters .map-nav {
+                  display: flex;
+                  flex-direction: row;
+                  justify-content: space-between;
+                  height: 10%; }
+                  .main-wrap .container-profile .wrapper-content .wrapper-profile-content .profile-content .search-container .result .wrap-moreFilters .map-nav .href-map {
+                    margin-top: 20px;
+                    display: flex;
+                    justify-content: flex-start; }
+                  .main-wrap .container-profile .wrapper-content .wrapper-profile-content .profile-content .search-container .result .wrap-moreFilters .map-nav .moreFilters {
+                    margin-top: 20px;
+                    display: flex;
+                    justify-content: flex-end;
+                    flex-direction: row; }
+                    .main-wrap .container-profile .wrapper-content .wrapper-profile-content .profile-content .search-container .result .wrap-moreFilters .map-nav .moreFilters a {
+                      color: #119945;
+                      margin-right: 15px; }
+                    .main-wrap .container-profile .wrapper-content .wrapper-profile-content .profile-content .search-container .result .wrap-moreFilters .map-nav .moreFilters label {
+                      margin-right: 15px; }
           .main-wrap .container-profile .wrapper-content .wrapper-profile-content .profile-content .wrap {
             width: 70%; }
             .main-wrap .container-profile .wrapper-content .wrapper-profile-content .profile-content .wrap .cont {
