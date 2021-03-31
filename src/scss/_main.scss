@@ -205,6 +205,32 @@ a{
           display: flex;
           justify-content: center;
           overflow: auto;
+          .adminZone{
+            align-self: center;
+            width: 80%;
+            height: 80%;
+            
+            .searchAdmin{
+              display: flex;
+              justify-content: flex-end;
+              height: 10%;
+              width: 100%;
+              .inputForSmthing{
+                width: 20%;
+                position: relative;
+              }
+            }
+            .adminTable{
+              @include shadow-box;
+              padding: 0;
+              @include margin;
+              height: 90%;
+              width: 100%;
+              box-sizing: border-box;
+              display: flex;
+              flex-direction: column;
+            }
+          }
           .search-container{
             width: 100%;
             height: 100%;
@@ -227,41 +253,10 @@ a{
                   width: 100%;
                   box-sizing: border-box;
                 }
-                .select-box {
-                  display: flex;
-                  width: 100%;
-                  flex-direction: column;
-                }
-                
-                .select-box .options-container {
-                  max-height: 0;
-                  width: 100%;
-                  opacity: 0;
-                  transition: all 0.4s;
-                  overflow: hidden;
-                  padding:10px;
-                  border:0;
-                  box-shadow:0 0 15px 4px rgba(0,0,0,0.06);
-                  order: 1;
-                  box-sizing: border-box;
-                }
-                
-                .selected {
-                  margin-bottom: 8px;
-                  position: relative;
-                  padding:10px;
-                  border:0;
-                  box-shadow:0 0 15px 4px rgba(0,0,0,0.06);
-                  order: 0;
-                  height: 16px;
-                  font-size: $font-size;
-                  display: flex;
-                  align-items: center;
-                }
-                
-                .selected::after {
+                .geo::before{
                   content: "";
-                  background: url("../images/arrow-down2.svg");
+                  display: block;
+                  background: url('../images/Vector.svg');
                   background-size: 15px;
                   background-repeat: no-repeat;
                   position: absolute;
@@ -269,45 +264,6 @@ a{
                   width: 16px;
                   right: 5px;
                   top: 11px;
-                  transition: all 0.4s;
-                }
-                
-                .select-box .options-container.active {
-                  max-height: 240px;
-                  opacity: 1;
-                  overflow-y: scroll;
-                }
-                
-                .select-box .options-container.active + .selected::after {
-                  transform: rotateX(180deg);
-                }
-                
-                .select-box .options-container::-webkit-scrollbar {
-                  width: 8px;
-                  background: #b3b3b3;
-                
-                }
-                
-                .select-box .options-container::-webkit-scrollbar-thumb {
-                  background: #525861;
-                  border-radius: 8px;
-                }
-                
-                .select-box .option,
-                .selected {
-                  cursor: pointer;
-                }
-                
-                .select-box .option:hover {
-                  background: #d6d6d6;
-                }
-                
-                .select-box label {
-                  cursor: pointer;
-                }
-                
-                .select-box .option .radio {
-                  display: none;
                 }
               }
               .ButforAction{
@@ -319,7 +275,92 @@ a{
             .result{
               width: 80%;
               height: 90%;
-
+              display: flex;
+              justify-content: center;
+              .wrap-moreFilters{
+                height: 100%;
+                width: 90%;
+                .search-result{
+                  width: 100%;
+                  height: 90%;
+                  display: flex;
+                  flex-direction: column;
+                  .user-results{
+                    width: 100%;
+                    display: flex;
+                    flex-direction: row;
+                    justify-content: space-around;
+                    .user{
+                      @include margin;
+                      @include shadow-box;
+                      width: 40%;
+                      height: 100px;
+                      display: flex;
+                      flex-direction: row;
+                      .nav-profile-user{
+                        width: 15%;
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+                      }
+                      .box-avatar{
+                        width: 30%;
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+                        img{
+                          display: flex;
+                          border-radius: 50%;
+                          width: 90%;
+                          box-sizing: border-box;
+                        }
+                      }
+                      .user-info{
+                        display: flex;
+                        flex-direction: column;
+                        width: 55%;
+                        color: #525861;
+                        .fullName{
+                          font-size: 20px;
+                          font-weight: bold;
+                        }
+                        .stack span, .baseRate span{
+                          color: rgb(162, 0, 255);
+                          font-weight: bold;
+                        }
+                      }
+                    }
+                  }
+                }
+                .map-nav{
+                  display: flex;
+                  flex-direction: row;
+                  justify-content: space-between;
+                  height: 10%;
+                  .href-map{
+                    @include margin;
+                    display: flex;
+                    justify-content: flex-start;
+                  }
+                  .moreFilters{
+                    @include margin;
+                    display: flex;
+                    justify-content: flex-end;
+                    flex-direction: row;
+                    a{
+                      color: rgb(17, 153, 69);
+                      margin-right: 15px;
+                    }
+                    label{
+                      margin-right: 15px;
+                    }
+                  }
+                }
+                .filter-menu{
+  
+                }
+              }
+              
             }
           }
           .wrap{
@@ -496,7 +537,6 @@ a{
                       @include margin;
                       color: rgb(182, 182, 182);
                     }
-                    
                   }
                 }
               }
