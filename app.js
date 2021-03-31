@@ -11,7 +11,7 @@ const Redis = require("ioredis");
 const port = process.env.PORT || 3001;
 const app = new Koa();
 
-const redis = new Redis("redis://localhost:6379");
+const redis = new Redis("redis://eEz4GYw6eMe1QOp2f2Zb1LBvvHisjppB@redis-15584.c256.us-east-1-2.ec2.cloud.redislabs.com:15584");
 app.context.redis = redis;
 
 const router = new Router();
