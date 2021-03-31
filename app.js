@@ -5,9 +5,29 @@ const views = require("koa-views");
 const serve = require("koa-static");
 const globalRouter = require("./src/router");
 const nunjucks = require("nunjucks");
+const bodyParser = require("koa-bodyparser");
+const Redis = require("ioredis");
+
 const port = process.env.PORT || 3001;
 const app = new Koa();
+
+const redis = new Redis("redis://localhost:6379");
+app.context.redis = redis;
+
 const router = new Router();
+
+app.use(bodyParser());
+app.use(async (ctx, next) => {
+  try {
+    await next();
+  } catch (err) {
+    if (err.isJoi) {
+      ctx.throw(400, err.details[0].message);
+    }
+    console.log(err);
+    ctx.throw(400, "Something wrong");
+  }
+});
 
 const nunjucksEnvironment = new nunjucks.Environment(
   new nunjucks.FileSystemLoader(path.join(__dirname, "/src/templates"))
@@ -22,7 +42,6 @@ const render = views(path.join(__dirname, "/src/templates/views"), {
     html: "nunjucks",
   },
 });
-
 
 app.use(render);
 
