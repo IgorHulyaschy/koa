@@ -81,8 +81,8 @@ async function createUser(ctx) {
   );
 
   const user = { ...createUserResponse.rows[0] };
-  await ctx.redis.set(user.id, JSON.stringify(user));
-  const result = await ctx.redis.get(JSON.parse(user.id));
+  // await ctx.redis.set(user.id, JSON.stringify(user));
+  // const result = await ctx.redis.get(JSON.parse(user.id));  working for a local db
   console.log(result)
   ctx.status = 201;
   ctx.body = {
@@ -103,8 +103,6 @@ async function deleteUser(ctx) {
   );
 
   const user_data = { ...createUserResponse.rows[0] };
-
-  await ctx.redis.set(category.num, JSON.stringify(category));
 
   ctx.status = 418;
   ctx.body = {
