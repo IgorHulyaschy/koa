@@ -4,43 +4,7 @@
 <div class="search-container">
   <section class="filter">
     <div class="settings"><span>Location</span>
-      <div class="select-box">
-        <div class="options-container">
-          <div class="option">
-            <input  type="radio" class="radio" id="ua" name="category"/>
-            <label class="flag" for="ua"><img src="./images/flags/ukraine.png">&nbspUkraine</label>
-          </div>
-
-          <div class="option" >
-            <input type="radio" class="radio" id="rus" name="category" />
-            <label  class="flag" for="rus"><img src="./images/flags/russia.png" alt="">&nbspRussia</label>
-          </div>
-
-          <div class="option">
-            <input type="radio" class="radio" id="usa" name="category" />
-            <label class="flag" for="usa"><img src="./images/flags/usa.png" alt="">&nbspUSA</label>
-          </div>
-
-          <div class="option">
-            <input type="radio" class="radio" id="cnd" name="category" />
-            <label class="flag" for="cnd"><img src="./images/flags/canada.png" alt="">&nbspCanada</label>
-          </div>
-
-          <div class="option">
-            <input type="radio" class="radio" id="blr" name="category" />
-            <label class="flag" for="blr"><img src="./images/flags/belarus.png" alt="">&nbspBelarus</label>
-          </div>
-
-          <div class="option">
-            <input type="radio" class="radio" id="frc" name="category" />
-            <label for="frc"><img src="./images/flags/france.png" alt="">&nbspFrance</label>
-          </div>
-        </div>
-
-        <div class="selected">
-          Select Country
-        </div>
-      </div>
+      <input type="text" class="inputForSmthing geo">
     </div>
     
     <div class="settings"><span>Search</span>
@@ -62,14 +26,111 @@
       <input type="button" value="Search" class="ButforAction"/>
     </div>
     </section>
-  <section class="result">
-    <div class="moreFilters">
-
-    </div>
-    <div class="finalResults">
-
-    </div>
-  </section>
+    <section class="result">
+      <div class="wrap-moreFilters">
+        <div class="map-nav">
+          <div class="href-map">
+            <a href="#">Show map</a>
+          </div>
+          <div class="moreFilters">
+            <a href="#"><i class="fas fa-signal"></i></a>
+            <input type="radio" name="filter" id="byprice"><label for="byprice">by price</label>
+            <input type="radio" name="filter" id="byrating"><label for="byrating">by rating</label>
+          </div>
+        </div>
+        <div class="search-result">
+          <div class="user-results">
+            <div class="user">
+              <div class="box-avatar">
+                <img src="/images/avatar.jpg"/>
+              </div>
+              <div class="user-info">
+                <span class="fullName">Igor Hulyaschy</span>
+                <span class="geopos">Kiev, Ukraine</span>
+                <span class="stack"><span>Stack:</span>Node.js, PostgreSQL, Vue.js</span>
+                <span class="baseRate"><span>Base Daily Rate:</span>$1200 USD</span>
+              </div>
+              <div class="nav-profile-user">
+                <a href="#">More</a>
+              </div>
+            </div>
+            <div class="user">
+              <div class="box-avatar">
+                <img src="/images/avatar.jpg"/>
+              </div>
+              <div class="user-info">
+                <span class="fullName">Igor Hulyaschy</span>
+                <span class="geopos">Kiev, Ukraine</span>
+                <span class="stack"><span>Stack:</span>Node.js, PostgreSQL, Vue.js</span>
+                <span class="baseRate"><span>Base Daily Rate:</span>$1200 USD</span>
+              </div>
+              <div class="nav-profile-user">
+                <a href="#">More</a>
+              </div>
+            </div>
+          </div>
+          <div class="user-results">
+            <div class="user">
+              <div class="box-avatar">
+                <img src="/images/avatar.jpg"/>
+              </div>
+              <div class="user-info">
+                <span class="fullName">Igor Hulyaschy</span>
+                <span class="geopos">Kiev, Ukraine</span>
+                <span class="stack"><span>Stack:</span>Node.js, PostgreSQL, Vue.js</span>
+                <span class="baseRate"><span>Base Daily Rate:</span>$1200 USD</span>
+              </div>
+              <div class="nav-profile-user">
+                <a href="#">More</a>
+              </div>
+            </div>
+            <div class="user">
+              <div class="box-avatar">
+                <img src="/images/avatar.jpg"/>
+              </div>
+              <div class="user-info">
+                <span class="fullName">Igor Hulyaschy</span>
+                <span class="geopos">Kiev, Ukraine</span>
+                <span class="stack"><span>Stack:</span>Node.js, PostgreSQL, Vue.js</span>
+                <span class="baseRate"><span>Base Daily Rate:</span>$1200 USD</span>
+              </div>
+              <div class="nav-profile-user">
+                <a href="#">More</a>
+              </div>
+            </div>
+          </div>
+          <div class="user-results">
+            <div class="user">
+              <div class="box-avatar">
+                <img src="/images/avatar.jpg"/>
+              </div>
+              <div class="user-info">
+                <span class="fullName">Igor Hulyaschy</span>
+                <span class="geopos">Kiev, Ukraine</span>
+                <span class="stack"><span>Stack:</span>Node.js, PostgreSQL, Vue.js</span>
+                <span class="baseRate"><span>Base Daily Rate:</span>$1200 USD</span>
+              </div>
+              <div class="nav-profile-user">
+                <a href="#">More</a>
+              </div>              
+            </div>
+            <div class="user"><div class="box-avatar">
+              <img src="/images/avatar.jpg"/>
+            </div>
+            <div class="user-info">
+              <span class="fullName">Igor Hulyaschy</span>
+              <span class="geopos">Kiev, Ukraine</span>
+              <span class="stack"><span>Stack:</span>Node.js, PostgreSQL, Vue.js</span>
+              <span class="baseRate"><span>Base Daily Rate:</span>$1200 USD</span>
+            </div>
+            <div class="nav-profile-user">
+              <a href="#">More</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
 </div>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" defer></script>

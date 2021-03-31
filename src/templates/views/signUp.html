@@ -1,7 +1,7 @@
 {% extends 'components/base.html' %}
 {% block content %}
 <header>
-  <img class="logo" src="./images/logo.svg">
+  <img class="logo" src="/images/logo.svg">
   <nav>Already have an acoount?
     <a href="index.html" class="navBut">Log in</a>
   </nav>
@@ -12,15 +12,15 @@
       <span>Sign up</span>
       <section class="name-lastName">
         <div class="nav-input1">
-          <input type="text" placeholder="Name" class="inputInRow">
+          <input type="text" placeholder="Name" class="inputInRow" value="{{name}}">
         </div>
         <div class="nav-input2">
-          <input type="text" placeholder="Last Name" class="inputInRow">
+          <input type="text" placeholder="Last Name" class="inputInRow" value="{{lastname}}">
         </div>
       </section>
       <section class="login-password">      
-        <input type="text" placeholder="Login" class="inputForSmthing">
-        <input type="password" placeholder="Password" class="inputForSmthing">
+        <input type="text" placeholder="Login" class="inputForSmthing" value="{{login}}">
+        <input type="text" placeholder="E-mail" class="inputForSmthing" value="{{email}}">
       </section>
       <input type="button" value="Sign up" class="ButforAction">
       <nav class="smallScreen">Already have an acoount?
