@@ -81,8 +81,8 @@ async function createUser(ctx) {
   );
 
   const user = { ...createUserResponse.rows[0] };
-  await ctx.redis.set(user.id, JSON.stringify(user));
-  const result = await ctx.redis.get(JSON.parse(user.id)); 
+  // await ctx.redis.set(user.id, JSON.stringify(user));
+  // const result = await ctx.redis.get(JSON.parse(user.id)); 
   console.log(result)
   ctx.status = 201;
   ctx.body = {
