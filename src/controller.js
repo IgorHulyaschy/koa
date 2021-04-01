@@ -57,6 +57,7 @@ async function search(ctx) {
 }
 
 async function signUp(ctx) {
+  const { body } = ctx.request;
   const { userId } = ctx.request.params;
   await validator.schema.validateAsync(body);
   const userResponse = await db.query(
@@ -113,10 +114,9 @@ async function deleteUser(ctx) {
 
 async function updateUser(ctx) {
   const { body } = ctx.request;
-  const { id, fname } = ctx.request.body;
   await validator.schema.validateAsync(body);
   const createUserResponse = await db.query(
-    `UPDATE users_data SET fname = '${fname}'  WHERE id = '${id}' RETURNING *`
+    `UPDATE users_data SET fname = '${body.fname}'  WHERE id = '${body.id}' RETURNING *`
   );
 
   const user_data = { ...createUserResponse.rows[0] };
