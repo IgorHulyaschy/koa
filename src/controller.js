@@ -83,7 +83,7 @@ async function createUser(ctx) {
 
   const user = { ...createUserResponse.rows[0] };
   // await ctx.redis.set(user.id, JSON.stringify(user));
-  // const result = await ctx.redis.get(JSON.parse(user.id)); 
+  // const result = await ctx.redis.get(JSON.parse(user.id));
   // console.log(result)
   ctx.status = 201;
   ctx.body = {
@@ -96,9 +96,7 @@ async function createUser(ctx) {
 }
 
 async function deleteUser(ctx) {
-  const { body } = ctx.request;
   const { userId } = ctx.request.params;
-  await validator.schema.validateAsync(body);
   const createUserResponse = await db.query(
     `DELETE FROM users_data WHERE id = ${userId} RETURNING *`
   );
@@ -113,10 +111,10 @@ async function deleteUser(ctx) {
 }
 
 async function updateUser(ctx) {
-  const { body } = ctx.request;
-  await validator.schema.validateAsync(body);
+  const { id, fname } = ctx.request.body;
+  await validator.schemaUpdate.validateAsync({fname});
   const createUserResponse = await db.query(
-    `UPDATE users_data SET fname = '${body.fname}'  WHERE id = '${body.id}' RETURNING *`
+    `UPDATE users_data SET fname = '${fname}'  WHERE id = '${id}' RETURNING *`
   );
 
   const user_data = { ...createUserResponse.rows[0] };
@@ -129,9 +127,7 @@ async function updateUser(ctx) {
 }
 
 async function getUser(ctx) {
-  const { body } = ctx.request;
   const { userId } = ctx.request.params;
-  await validator.schema.validateAsync(body);
   const getUserResponse = await db.query(
     `SELECT * FROM "users_data" WHERE id = '${userId}'`
   );
