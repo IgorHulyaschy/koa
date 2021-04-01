@@ -112,6 +112,7 @@ async function deleteUser(ctx) {
 }
 
 async function updateUser(ctx) {
+  const { body } = ctx.request;
   const { id, fname } = ctx.request.body;
   await validator.schema.validateAsync(body);
   const createUserResponse = await db.query(
@@ -128,6 +129,7 @@ async function updateUser(ctx) {
 }
 
 async function getUser(ctx) {
+  const { body } = ctx.request;
   const { userId } = ctx.request.params;
   await validator.schema.validateAsync(body);
   const getUserResponse = await db.query(
