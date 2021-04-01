@@ -113,10 +113,10 @@ async function deleteUser(ctx) {
 
 async function updateUser(ctx) {
   const { body } = ctx.request;
-  const { id, fname } = ctx.request.body;
+  const { id, fname, lname, login, email } = ctx.request.body;
   await validator.schema.validateAsync(body);
   const createUserResponse = await db.query(
-    `UPDATE users_data SET fname = '${fname}' WHERE id = '${id}' RETURNING *`
+    `UPDATE users_data SET fname = '${fname}' lname= '${lname}' login = '${login}' email = '${email}'  WHERE id = '${id}' RETURNING *`
   );
 
   const user_data = { ...createUserResponse.rows[0] };
