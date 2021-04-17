@@ -17,10 +17,10 @@ router.get("signUp", controllers.signUp);
 router.get("admin-zone", controllers.adminZone);
 //CRUD
 router.get("signUp/:userId", controllers.signUp);
-router.post("user", controllers.createUser);
-router.delete("delete/:userId", controllers.deleteUser);
-router.post("update", controllers.updateUser)
-router.get("get/:userId", controllers.getUser)
+// router.post("user", controllers.createUser);
+// router.delete("delete/:userId", controllers.deleteUser);
+// router.post("update", controllers.updateUser)
+// router.get("get/:userId", controllers.getUser)
 module.exports = {
   router,
 };

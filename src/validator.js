@@ -1,11 +1,11 @@
 const Joi = require("joi");
-const joi = require("joi");
 
 const schema = Joi.object({
-  fname: Joi.string().min(3).max(20),
-  lname: Joi.string().min(3).max(20),
-  login: Joi.string().min(3).max(20),
-  email: Joi.string().min(3).max(20),
+  fname: Joi.string().min(3).max(20).required(),
+  lname: Joi.string().min(3).max(20).required(),
+  login: Joi.string().min(3).max(20).required(),
+  email: Joi.string().min(3).max(20).required(),
+  password: Joi.string().min(6).max(20).required(),
 });
 
 const schemaUpdate = Joi.object({
