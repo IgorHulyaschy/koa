@@ -37,7 +37,6 @@ class UsersController {
 
   static async updateCategory(ctx) {
     const { categoryid, email } = ctx.request.body;
-    const category = 
     ctx.body = (
       await UserDB.updateCategory(categoryid, email)
     )

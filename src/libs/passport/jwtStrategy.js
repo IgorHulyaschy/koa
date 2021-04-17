@@ -6,7 +6,7 @@ const { UserDB } = require("../../user/models/UserDB");
 
 const opts = {
   jwtFromRequest: ExtractJwt.fromAuthHeaderWithScheme("JWT"),
-  secretOrKey: process.env.JWT_SECRET,
+  secretOrKey: "secret",
 };
 
 module.exports = new JwtStrategy(opts, (jwtPayload, done) => {
