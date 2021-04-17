@@ -3,9 +3,22 @@
 
 ### Routs for db requests:
 ```javascript
-router.get("signUp/:userId", controllers.signUp);
-router.post("user", controllers.createUser);
-router.delete("delete/:userId", controllers.deleteUser);
-router.post("update", controllers.updateUser)
-router.get("get/:userId", controllers.getUser)
+requestRouter.post("createUser", Validator.signUp, UsersController.createUser);
+requestRouter.post("logIn", Validator.signIn, UsersController.logIn);
+requestRouter.get(
+  "profileAuth",
+  passport.authenticate("jwt", { session: false }),
+  UsersController.profileAuth
+);
+requestRouter.get("refresh", UsersController.refresh);
+requestRouter.get(
+  "list",
+  passport.authenticate("jwt", { session: false }),
+  UsersController.userList
+);
+requestRouter.post(
+  "updateCategory",
+  Validator.updateCategory,
+  UsersController.updateCategory
+);
 ```
