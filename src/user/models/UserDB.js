@@ -84,6 +84,15 @@ class UserDB {
     return new User(createUserResponse.rows[0]);
   }
 
+  static async deleteUser(userId) {
+    const user = await db.query(
+      `DELETE FROM users_data WHERE id = ${userId} RETURNING *`
+    )
+    return { 
+      message: "DELETED" 
+    }
+  }
+
   static async updateCategory(categoryid, email) {
     await db.query(`     
       UPDATE users_data

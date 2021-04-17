@@ -16,6 +16,14 @@ class UsersController {
     ).getInfo();
   }
 
+  static async deleteUser(ctx) {
+    const { userId } = ctx.request.params;
+    ctx.status = 410;
+    ctx.body = (
+      await UserDB.deleteUser(userId)
+    )
+  }
+
   static async logIn(ctx) {
     await passport.authenticate("local", (err, user) => {
       if (user) {

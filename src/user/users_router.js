@@ -24,4 +24,5 @@ requestRouter.post(
   Validator.updateCategory,
   UsersController.updateCategory
 );
+requestRouter.delete("deleteUser/:userId", UsersController.deleteUser)
 module.exports = requestRouter;
