@@ -1,13 +1,14 @@
 const { Pool } = require('pg');
+require("dotenv").config();
 
 class Database {
   constructor() {
     this.config = {
-      user: 'nfdcadmj',
-      host: 'queenie.db.elephantsql.com',
-      database: 'nfdcadmj',
-      password: 'mq8nKqqS5zbdVQXCA8Tg2RHtJ9ZrTEcA',
-      port: 5432,
+      user: process.env.DB_USER,
+      host: process.env.DB_HOST,
+      database: process.env.DB,
+      password: process.env.DB_PASS,
+      port: +process.env.DB_PORT,
     };
 
     this.pool = new Pool(this.config);
