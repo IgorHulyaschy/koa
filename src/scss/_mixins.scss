@@ -60,47 +60,15 @@
 
 @mixin bp-576 {
   @media (max-width: 576px) and (min-width: 1px) {
-    header{
-      img{
-        margin-left: 10px;
-      }
-      nav{
-        margin-right: 10px;
-      }
-    }
-    .content{
-      .wrapper{
-        background-color: white;
-        form{
-          width:90%;
-          // span{
-          // }
-          // input[type="text"]{
-            
-          // }
-          // input[type="password"]{
-          
-          // }
-          // input[type="button"]{
-            
-          // }
-          // a{
-            
-          
-          // }
-
-          section{
-            display: flex;
-            flex-direction: column;
-            .inputInRow{
-              width: 100%;
-            }
-          }
-          .smallScreen{
-            display: block;
-          }
+    .name-lastName{
+      display: flex;
+      flex-direction: column;
+      .nav-input1, .nav-input2{
+        width: 100%;
+        .inputForSmthing{
+          width: 100%;
         }
-      }    
+      }
     }
   }
 }

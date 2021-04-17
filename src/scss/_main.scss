@@ -81,7 +81,7 @@ a{
           @include f-as-end;
           @include margin;
         }
-
+        @include bp-576;
         .name-lastName{
           width: 100%;
           display: flex;
