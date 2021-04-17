@@ -166,21 +166,13 @@ a {
   display: flex;
   flex-direction: column; }
   @media (max-width: 576px) and (min-width: 1px) {
-    .container header img {
-      margin-left: 10px; }
-    .container header nav {
-      margin-right: 10px; }
-    .container .content .wrapper {
-      background-color: white; }
-      .container .content .wrapper form {
-        width: 90%; }
-        .container .content .wrapper form section {
-          display: flex;
-          flex-direction: column; }
-          .container .content .wrapper form section .inputInRow {
-            width: 100%; }
-        .container .content .wrapper form .smallScreen {
-          display: block; } }
+    .container .name-lastName {
+      display: flex;
+      flex-direction: column; }
+      .container .name-lastName .nav-input1, .container .name-lastName .nav-input2 {
+        width: 100%; }
+        .container .name-lastName .nav-input1 .inputForSmthing, .container .name-lastName .nav-input2 .inputForSmthing {
+          width: 100%; } }
   .container header {
     display: flex;
     flex-direction: row;
@@ -244,6 +236,14 @@ a {
           display: flex;
           align-self: flex-end;
           margin-top: 20px; }
+        @media (max-width: 576px) and (min-width: 1px) {
+          .container .content .wrapper form .name-lastName {
+            display: flex;
+            flex-direction: column; }
+            .container .content .wrapper form .name-lastName .nav-input1, .container .content .wrapper form .name-lastName .nav-input2 {
+              width: 100%; }
+              .container .content .wrapper form .name-lastName .nav-input1 .inputForSmthing, .container .content .wrapper form .name-lastName .nav-input2 .inputForSmthing {
+                width: 100%; } }
         .container .content .wrapper form .name-lastName {
           width: 100%;
           display: flex;
