@@ -42,9 +42,9 @@ class UserDB {
     const passwordHash = crypto
       .pbkdf2Sync(
         password,
-        process.env.SALT,
-        +process.env.ITERATIONS,
-        +process.env.CHARS,
+        "salt",
+        100000,
+        64,
         "sha256"
       )
       .toString("hex");

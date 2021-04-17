@@ -31,11 +31,11 @@ module.exports = new LocalStrategy(opts, async (req, email, password, done) => {
 
       const accessToken = jwt.encode(
         accessTokenPayload,
-        process.env.TOKEN_SECRET
+        "secret"
       );
       const refreshToken = jwt.encode(
         refreshTokenPayload,
-        process.env.REFRESH_SECRET
+        "secret"
       );
 
       const data = user.getInfo();

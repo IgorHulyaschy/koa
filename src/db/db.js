@@ -4,11 +4,11 @@ require("dotenv").config();
 class Database {
   constructor() {
     this.config = {
-      user: process.env.DB_USER,
-      host: process.env.DB_HOST,
-      database: process.env.DB,
-      password: process.env.DB_PASS,
-      port: +process.env.DB_PORT,
+      user: "ojlwsnxm",
+      host: "rogue.db.elephantsql.com",
+      database: "ojlwsnxm",
+      password: "RKAPePIdy9pAlBbc9p9nc-2cwmMa-xkw",
+      port: 5432,
     };
 
     this.pool = new Pool(this.config);

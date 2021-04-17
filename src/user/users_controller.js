@@ -45,7 +45,7 @@ class UsersController {
 
   static async refresh(ctx) {
     const token = ctx.headers.authorization.split(" ")[1];
-    const decodedToken = jwt.decode(token, process.env.REFRESH_SECRET);
+    const decodedToken = jwt.decode(token, "secret");
 
     if (decodedToken.expiresIn <= new Date().getTime()) {
       const error = new Error(
@@ -67,9 +67,9 @@ class UsersController {
       expiresIn: new Date().setTime(new Date().getTime() + 1000000),
     };
     ctx.body = {
-      accessToken: jwt.encode(accessToken, process.env.TOKEN_SECRET),
+      accessToken: jwt.encode(accessToken, "secret"),
       accessTokenExpirationDate: accessToken.expiresIn,
-      refreshToken: jwt.encode(refreshToken, process.env.REFRESH_SECRET),
+      refreshToken: jwt.encode(refreshToken, "secret"),
       refreshTokenExpirationDate: refreshToken.expiresIn,
     };
   }
