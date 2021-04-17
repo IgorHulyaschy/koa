@@ -77,8 +77,11 @@ async function createUser(ctx) {
   const { body } = ctx.request;
   await validator.schema.validateAsync(body);
   const createUserResponse = await db.query(
-    `INSERT INTO "users_data" (fname, lname, login, email) VALUES 
-    ('${body.fname}', '${body.lname}', '${body.login}', '${body.email}') RETURNING *`
+    `INSERT INTO "users_data"
+    (fname, lname, login, email) VALUES 
+    ('${body.fname}', '${body.lname}',
+    '${body.login}', '${body.email}', 
+    '${body.password}') RETURNING *`
   );
 
   const user = { ...createUserResponse.rows[0] };
@@ -92,6 +95,7 @@ async function createUser(ctx) {
     lname: user.lname,
     login: user.login,
     email: user.email,
+    password: user.password
   };
 }
 
@@ -103,7 +107,7 @@ async function deleteUser(ctx) {
 
   const user_data = { ...createUserResponse.rows[0] };
 
-  ctx.status = 418;
+  ctx.status = 200;
   ctx.body = {
     message: "DELETED",
     fname: user_data.fname,
