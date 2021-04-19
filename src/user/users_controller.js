@@ -37,9 +37,9 @@ class UsersController {
     })(ctx);
   }
 
-  static profileAuth(ctx) {
+  static async profileAuth(ctx) {
     ctx.body = {
-      success: true,
+      user: ctx.state.user,
     };
   }
 

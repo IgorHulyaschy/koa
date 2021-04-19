@@ -80,7 +80,6 @@ class UserDB {
         }
         throw new Error(err.message);
       });
-    console.log(new User(createUserResponse.rows[0]));
     return new User(createUserResponse.rows[0]);
   }
 
@@ -108,7 +107,6 @@ class UserDB {
     if (!category.rowCount) {
       return { message: "Inccorect email" };
     }
-    console.log({ ...category.rows[0] });
     return { ...category.rows[0] };
   }
 }
