@@ -22,7 +22,7 @@ app.use(koaSwagger({
   routePrefix: '/docs',
   hideTopbar: true,
   swaggerOptions: {
-    url: `${config.get('koa-project-hood.herokuapp.com')}/docs.yml`,
+    url: `koa-project-hood.herokuapp.com/docs.yml`,
   },
 }));
 
