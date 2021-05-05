@@ -1,5 +1,5 @@
 get:
-  summary: Profile
+  summary: List of users
   description: Return all of users if this user is authorizated
   tags:
     - Users
