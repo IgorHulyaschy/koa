@@ -3,7 +3,7 @@ info:
   title: Hood
   description: Made in China
   version: 0.0.1
-  host: koa-project-hood.herokuapp.com
+  host: 
   schemes:
   - http
   - https
