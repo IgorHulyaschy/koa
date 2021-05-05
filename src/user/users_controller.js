@@ -5,7 +5,7 @@ const passport = require("koa-passport");
 
 const { UserDB } = require("./models/UserDB");
 const db = require("../db/db");
-const { User } = require("./models/User");
+const AWSS3 = require('../utils/uploadS3');
 
 class UsersController {
   static async createUser(ctx) {
@@ -13,12 +13,12 @@ class UsersController {
     ctx.status = 201;
     ctx.body = (
       await UserDB.createUser(fname, lname, login, email, password)
-    ).getInfo();
+    ).getInfo(true);
   }
 
   static async deleteUser(ctx) {
     const { userId } = ctx.request.params;
-    ctx.status = 410;
+    ctx.status = 204;
     ctx.body = (
       await UserDB.deleteUser(userId)
     )
@@ -87,6 +87,13 @@ class UsersController {
     ctx.body = {
       users,
     };
+  }
+
+  static async updatePhoto(ctx) {
+    const photoUrl = await AWSS3.uploadS3(ctx.request.body.photo, 'users', `${ctx.state.user.email}'s_photos`);
+    
+    await UserDB.updateUserPhoto(photoUrl, ctx.state.user.email);
+    ctx.body = { photoUrl };
   }
 }
 

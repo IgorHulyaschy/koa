@@ -25,4 +25,5 @@ requestRouter.post(
   UsersController.updateCategory
 );
 requestRouter.delete("deleteUser/:userId", UsersController.deleteUser)
+requestRouter.put('photo',   passport.authenticate("jwt", { session: false }), UsersController.updatePhoto)
 module.exports = requestRouter;

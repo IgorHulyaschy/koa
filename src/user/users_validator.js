@@ -18,13 +18,15 @@ exports.signUp = {
     body: {
       ...auth,
       ...usersData,
+      
     },
     output: {
       201: {
         body: {
           ...usersData,
           email: joi.string().min(3).max(20).required(),
-
+          categoryId: joi.number().required(),
+          photo: joi.required() 
         },
       },
     },

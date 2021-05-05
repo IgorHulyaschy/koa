@@ -5,23 +5,26 @@ class User {
     this.lname = dataDB.lname;
     this.login = dataDB.login;
     this.email = dataDB.email;
-    this.categoryId = dataDB.categoryId;
+    this.categoryId = dataDB.categoryid;
     this.password = dataDB.password;
+    this.photo = dataDB.photo;
   }
-  getInfo(idFlag = false) {
+  getInfo(photoFlag = false) {
     const responseData = {
       fname: this.fname,
       lname: this.lname,
       login: this.login,
       email: this.email,
+      categoryId: this.categoryId 
     };
 
-    if (idFlag) {
-      responseData.id = this.id;
+    if (photoFlag) {
+      responseData.photo = this.photo;
     }
 
     return responseData;
   }
+  
 
   getId() {
     return this.id;

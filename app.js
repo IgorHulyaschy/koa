@@ -6,15 +6,25 @@ const views = require("koa-views");
 const serve = require("koa-static");
 const nunjucks = require("nunjucks");
 const bodyParser = require("koa-bodyparser");
+const { koaSwagger } = require("koa2-swagger-ui")
+const config = require('config');
 
 const passport = require("./src/libs/passport/koaPassport");
-const globalRouter = require("./src/router");
 const ErrorCatcher = require("./src/middlewares/errorCatcher");
 
 passport.initialize();
 
 const port = process.env.PORT || 3001;
 const app = new Koa();
+
+app.use(serve('src/docs'));
+app.use(koaSwagger({
+  routePrefix: '/docs',
+  hideTopbar: true,
+  swaggerOptions: {
+    url: `${config.get('server.baseUrl')}/docs.yml`,
+  },
+}));
 
 const router = new Router();
 
@@ -39,7 +49,7 @@ app.use(render);
 
 app.use(serve(path.join(__dirname, "/src/public")));
 
-router.use("/", globalRouter.router.routes());
+
 router.use("/", require("./src/user/users_router"));
 app.use(router.middleware());
 

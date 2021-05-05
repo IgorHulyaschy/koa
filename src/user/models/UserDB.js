@@ -3,6 +3,7 @@ const crypto = require("crypto");
 
 const { User } = require("./User");
 const db = require("../../db/db");
+const { CostExplorer } = require("aws-sdk");
 
 class UserDB {
   static async getUserById(id) {
@@ -40,13 +41,7 @@ class UserDB {
     const user = { ...userResponse.rows[0] };
 
     const passwordHash = crypto
-      .pbkdf2Sync(
-        password,
-        "salt",
-        100000,
-        64,
-        "sha256"
-      )
+      .pbkdf2Sync(password, "salt", 100000, 64, "sha256")
       .toString("hex");
 
     if (user.password !== passwordHash) {
@@ -84,12 +79,18 @@ class UserDB {
   }
 
   static async deleteUser(userId) {
+
     const user = await db.query(
       `DELETE FROM users_data WHERE id = ${userId} RETURNING *`
-    )
-    return { 
-      message: "DELETED" 
+    );
+    if (!user.id) {
+      return {
+        message: "User with this id does not exist"
+      }
     }
+    return {
+      message: "DELETED",
+    };
   }
 
   static async updateCategory(categoryid, email) {
@@ -108,6 +109,13 @@ class UserDB {
       return { message: "Inccorect email" };
     }
     return { ...category.rows[0] };
+  }
+
+  static async updateUserPhoto(photoUrl, email) {
+    await db.query(`
+      UPDATE "users_data" SET photo = '${photoUrl}'
+      WHERE email = '${email}'
+    `);
   }
 }
 module.exports = {

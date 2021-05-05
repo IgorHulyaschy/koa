@@ -38,7 +38,7 @@ module.exports = new LocalStrategy(opts, async (req, email, password, done) => {
         "secret"
       );
 
-      const data = user.getInfo();
+      const data = user.getInfo(true);
       data.tokens = { accessToken, refreshToken };
 
       return done(null, data);
