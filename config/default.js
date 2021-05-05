@@ -1,6 +1,6 @@
 module.exports = {
   server: {
-    baseUrl: 'http://localhost:3001',
+    baseUrl: 'https://koa-project-hood.herokuapp.com',
   },
   sendGrid: {
     baseEmail: 'no-reply@fix-me-bruh.com',
