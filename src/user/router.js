@@ -31,4 +31,5 @@ requestRouter.post('user/email', UsersController.checkEmail)
 requestRouter.put('user/profile', passport.authenticate("jwt", { session: false }), UsersController.updateProfileInfo)
 requestRouter.post('user/search', UsersController.search)
 requestRouter.get('user/profile/:email', UsersController.getUser)
+let a= 2;
 module.exports = requestRouter;
