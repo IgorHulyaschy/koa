@@ -51,10 +51,19 @@ class UserDB {
   }
 
   static async userList() {
-    const userListResponse = await db.query('SELECT * FROM "users_data"');
-
+    const userListResponse = await db.query(`
+    SELECT users_data.id, fname, lname, login, email, category.name, stack, rate, country, photo
+    FROM "users_data"
+    JOIN category
+    ON users_data.categoryId = category.id
+    `);
+    
     const users = userListResponse.rows.map((userDb) => new User(userDb));
-
+    users.forEach(item => {
+      if(item.photo === null){
+        item.photo = 'https://photo-hood.s3.us-east-2.amazonaws.com/users/default_avatar/logo.jpg'
+      }
+    });
     return users;
   }
   static async createUser(fname, lname, login, email, password) {
@@ -79,10 +88,11 @@ class UserDB {
   }
 
   static async deleteUser(userId) {
-
+    console.log(userId)
     const user = await db.query(
       `DELETE FROM users_data WHERE id = ${userId} RETURNING *`
     );
+    console.log(user)
     if (!user.id) {
       return {
         message: "User with this id does not exist"
@@ -91,6 +101,18 @@ class UserDB {
     return {
       message: "DELETED",
     };
+  }
+  static async updatePassword(email, password){
+    const passwordHash = crypto
+      .pbkdf2Sync(password, "salt", 100000, 64, "sha256")
+      .toString("hex");
+
+    const user = await db.query(
+      `UPDATE users_data
+      SET password = '${passwordHash}'
+      WHERE email = '${email}' RETURNING *`
+    )
+    return new User({...user.rows[0]})
   }
 
   static async updateCategory(categoryid, email) {
@@ -109,6 +131,64 @@ class UserDB {
       return { message: "Inccorect email" };
     }
     return { ...category.rows[0] };
+  }
+  static async getCategory(email){
+    const category = await db.query(`
+      SELECT name
+      FROM category
+      JOIN users_data
+      ON users_data.categoryId = category.id
+      WHERE email = '${email}'`)
+      return { ...category.rows[0] }
+  }
+
+  static async getUser(email) {
+    const responseData = await db.query(`
+      SELECT *
+      FROM users_data
+      WHERE email = '${email}'
+    `)
+    const user = {...responseData.rows[0]}
+    if(user.photo === null) {
+      user.photo = 'https://photo-hood.s3.us-east-2.amazonaws.com/users/default_avatar/logo.jpg'
+    }
+    return new User(user)
+
+  }
+  static async searchUser(search, country, categoryId, stack){
+
+    const result = await db.query(`
+      SELECT fname, lname, country, stack, rate, photo, email
+      FROM users_data
+      WHERE users_data.categoryId = ${categoryId} 
+      AND CONCAT (fname, ' ', lname) ILIKE  '%${search}%' 
+      ${stack ? `AND stack ILIKE '%${stack}%'` : ''}
+      ${country ?  `AND country ILIKE '%${country}%'` : ''}
+    `)
+    const users = result.rows.map((user) => new User(user));
+    users.forEach(item => {
+      if(item.photo === null) {
+        item.photo = 'https://photo-hood.s3.us-east-2.amazonaws.com/users/default_avatar/logo.jpg'
+      }
+    })
+    return users;
+    
+  }
+
+  static async updateProfile(fname, lname, login, categoryId, phone, country, stack, rate, email){
+    const user = await db.query(`
+    UPDATE users_data
+    SET fname = '${fname}',
+    lname = '${lname}', 
+    login = '${login}', 
+    phone = '${phone}', 
+    country = '${country}', 
+    stack = '${stack}',
+    categoryId = ${categoryId},
+    rate= ${rate}
+    WHERE email = '${email}' RETURNING *
+    `)
+    return new User({...user.rows[0]})
   }
 
   static async updateUserPhoto(photoUrl, email) {

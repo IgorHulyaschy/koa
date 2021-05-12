@@ -1,6 +1,5 @@
 require("dotenv").config();
 const jwt = require("jwt-simple");
-const crypto = require("crypto");
 const passport = require("koa-passport");
 
 const { UserDB } = require("./models/UserDB");
@@ -10,18 +9,28 @@ const AWSS3 = require('../utils/uploadS3');
 class UsersController {
   static async createUser(ctx) {
     const { fname, lname, login, email, password } = ctx.request.body;
+    console.log({ fname, lname, login, email, password })
     ctx.status = 201;
     ctx.body = (
       await UserDB.createUser(fname, lname, login, email, password)
-    ).getInfo(true);
+    ).getCreatedUser();
   }
 
   static async deleteUser(ctx) {
-    const { userId } = ctx.request.params;
+    const {id}  = ctx.request.body;
+    console.log(id)
     ctx.status = 204;
     ctx.body = (
-      await UserDB.deleteUser(userId)
+      await UserDB.deleteUser(id)
     )
+  }
+  static async updatePassword(ctx){
+    const {email, password} = ctx.request.body;
+    
+    ctx.body = (
+      await UserDB.updatePassword(email, password)
+    )
+    
   }
 
   static async logIn(ctx) {
@@ -38,8 +47,14 @@ class UsersController {
   }
 
   static async profileAuth(ctx) {
+    const name = await UserDB.getCategory(ctx.state.user.email)
+    if(ctx.state.user.photo === null){
+      ctx.state.user.photo = 'https://photo-hood.s3.us-east-2.amazonaws.com/users/default_avatar/logo.jpg'
+    }
+    
     ctx.body = {
       user: ctx.state.user,
+      name: name,
     };
   }
 
@@ -47,6 +62,29 @@ class UsersController {
     const { categoryid, email } = ctx.request.body;
     ctx.body = (
       await UserDB.updateCategory(categoryid, email)
+    )
+  }
+
+  static async updateProfileInfo(ctx){
+    
+    const { fname, lname, login, categoryId, phone, country, stack, rate} = ctx.request.body;
+    ctx.body = (
+      await UserDB.updateProfile(fname, lname, login, categoryId, phone,  country, stack, rate, ctx.state.user.email)
+    )
+  }
+
+  static async search(ctx){
+    const {search, country, categoryId, stack} = ctx.request.body;
+    const users = ( await UserDB.searchUser(search, country, categoryId, stack)).map((user) => user.getInfo())
+    ctx.body = {
+      users
+    }
+  }
+  static async getUser(ctx){
+    const {email} = ctx.request.params
+    console.log(email)
+    ctx.body = (
+      await (await UserDB.getUser(email)).getInfo()
     )
   }
 
@@ -82,7 +120,7 @@ class UsersController {
   }
 
   static async userList(ctx) {
-    const users = (await UserDB.userList()).map((user) => user.getInfo());
+    const users = (await UserDB.userList()).map((user) => user.getConsoleInfo());
 
     ctx.body = {
       users,
@@ -90,10 +128,19 @@ class UsersController {
   }
 
   static async updatePhoto(ctx) {
-    const photoUrl = await AWSS3.uploadS3(ctx.request.body.photo, 'users', `${ctx.state.user.email}'s_photos`);
+    const {photo} = ctx.request.body
+    console.log(ctx.request.body)
+    const photoUrl = await AWSS3.uploadS3(photo, 'users', `${ctx.state.user.email}'s_photos`);
+    
     
     await UserDB.updateUserPhoto(photoUrl, ctx.state.user.email);
     ctx.body = { photoUrl };
+  }
+  static async checkEmail(ctx){
+    const {email} = ctx.request.body
+    ctx.body = (
+      await UserDB.getUserByEmail(email)
+    ) 
   }
 }
 

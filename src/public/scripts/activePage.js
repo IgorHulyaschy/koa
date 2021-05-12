@@ -1,1 +1,0 @@
-const active = document.querySelector('')

@@ -21,12 +21,12 @@ module.exports = new LocalStrategy(opts, async (req, email, password, done) => {
 
       const accessTokenPayload = {
         id: user.getId(),
-        expiresIn: new Date().setTime(new Date().getTime() + 200000),
+        expiresIn: new Date().setTime(new Date().getTime() + 2000000),
       };
 
       const refreshTokenPayload = {
         email: user.email,
-        expiresIn: new Date().setTime(new Date().getTime() + 1000000),
+        expiresIn: new Date().setTime(new Date().getTime() + 1000000000),
       };
 
       const accessToken = jwt.encode(

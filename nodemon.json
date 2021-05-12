@@ -3,6 +3,5 @@
   "quiet": false,
   "server": "./main/index.html",
   "watch": ["./"],
-  "ext": "js, scss, html",
-  "exec": "npm run build-css && node app.js"
+  "ext": "js, scss, html"
 }

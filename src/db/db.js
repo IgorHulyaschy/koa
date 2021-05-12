@@ -4,10 +4,10 @@ require("dotenv").config();
 class Database {
   constructor() {
     this.config = {
-      user: "ojlwsnxm",
-      host: "rogue.db.elephantsql.com",
-      database: "ojlwsnxm",
-      password: "RKAPePIdy9pAlBbc9p9nc-2cwmMa-xkw",
+      user: "postgres",
+      host: "localhost",
+      database: "hood",
+      password: "emazeb32",
       port: 5432,
     };
 

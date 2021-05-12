@@ -8,14 +8,34 @@ class User {
     this.categoryId = dataDB.categoryid;
     this.password = dataDB.password;
     this.photo = dataDB.photo;
+    this.name = dataDB.name;
+    this.phone = dataDB.phone;
+    this.country = dataDB.country;
+    this.stack = dataDB.stack;
+    this.rate = dataDB.rate;
   }
-  getInfo(photoFlag = false) {
+  getCreatedUser(){
     const responseData = {
       fname: this.fname,
       lname: this.lname,
       login: this.login,
       email: this.email,
-      categoryId: this.categoryId 
+      categoryId: this.categoryId ,
+    }
+  }
+  getInfo(photoFlag = false) {
+    const responseData = {
+      
+      fname: this.fname,
+      lname: this.lname,
+      login: this.login,
+      email: this.email,
+      categoryId: this.categoryId ,
+      phone : this.phone,
+      country : this.country,
+      stack : this.stack,
+      rate : this.rate,
+      photo: this.photo,
     };
 
     if (photoFlag) {
@@ -24,6 +44,36 @@ class User {
 
     return responseData;
   }
+  getConsoleInfo() {
+    const responseData = {
+      id: this.id,
+      fname: this.fname,
+      lname: this.lname,
+      login: this.login,
+      email: this.email,
+      name: this.name,
+      country: this.country,
+      stack: this.stack,
+      rate: this.rate,
+      photo: this.photo,
+    }
+    return responseData;
+  }
+  getProfileInfo(){
+    const responseData = {
+    fname: this.fname,
+    lname: this.lname,
+    login: this.login,
+    categoryId: this.categoryId,
+    email: this.email,
+    phone : this.phone,
+    country : this.country,
+    stack : this.stack,
+    rate : this.rate,
+    }
+    return responseData
+  }
+  
   
 
   getId() {
